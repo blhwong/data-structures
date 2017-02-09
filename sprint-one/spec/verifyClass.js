@@ -97,6 +97,8 @@ define(['../../lib/chai/chai.js', '../../lib/underscore/underscore.js'], functio
         }
 
         it('has a .prototype.constructor property that points back to the constructor itself', function() {
+          console.log(constructor.prototype.constructor);
+          console.log(constructor);
           expect(constructor.prototype.constructor).to.equal(constructor);
         });
 
