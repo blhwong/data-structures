@@ -44,8 +44,14 @@ var bstMethods = {
     }
     return false;
   },
-  depthFirstLog: function() {
-
+  depthFirstLog: function(cbFunction, head) {
+    if (head === null) {
+      return;
+    }
+    head = head || this;
+    cbFunction(head.value);
+    head.depthFirstLog(cbFunction, head.left);
+    head.depthFirstLog(cbFunction, head.right);
   }
 };
 
