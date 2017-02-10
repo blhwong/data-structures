@@ -13,7 +13,7 @@ HashTable.prototype.insert = function(k, v) {
   if (arrayAtBucket) { //If there's items at the bucket [[1: apple]] --> [1: orange]
     var toInsert = [k, v];
     for (var a = 0; a < arrayAtBucket.length; a++) {
-      if (arrayAtBucket[a][0] === k ) { //
+      if (arrayAtBucket[a][0] === k ) { //Overwrites duplicate keys
         arrayAtBucket[a] = toInsert;
         return;
       }
@@ -21,9 +21,8 @@ HashTable.prototype.insert = function(k, v) {
     arrayAtBucket.push(toInsert); 
   } else { // It's empty
     arrayAtBucket = [[k, v]];
+    this._storage.set(index, arrayAtBucket); 
   }
-
-  this._storage.set(index, arrayAtBucket); 
 };
 
 HashTable.prototype.retrieve = function(k) {
