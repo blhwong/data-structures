@@ -44,14 +44,25 @@ var bstMethods = {
     }
     return false;
   },
-  depthFirstLog: function(cbFunction, head) {
-    if (head === null) {
-      return;
+
+  // depthFirstLog: function(cbFunction, head) {
+  //   if (head === null) {
+  //     return;
+  //   }
+  //   head = head || this;
+  //   cbFunction(head.value);
+  //   head.depthFirstLog(cbFunction, head.left);
+  //   head.depthFirstLog(cbFunction, head.right);
+  // }
+  depthFirstLog: function(cbFunction) {
+  
+    cbFunction(this.value);
+    if (this.left) {
+      this.left.depthFirstLog(cbFunction);
     }
-    head = head || this;
-    cbFunction(head.value);
-    head.depthFirstLog(cbFunction, head.left);
-    head.depthFirstLog(cbFunction, head.right);
+    if (this.right) {
+      this.right.depthFirstLog(cbFunction);
+    }
   }
 };
 
