@@ -29,8 +29,20 @@ var bstMethods = {
       }
     }
   },
-  contains: function() {
-
+  contains: function(value, head) {
+    //If it's bigger than tree's value
+    head = head || this;
+    if (value === head.value) {
+      return true;
+    }
+    //Goes right
+    if (value > head.value && head.right !== null) {
+      return head.contains(value, head.right);
+    //Goes left
+    } else if (value < head.value && head.left !== null) {
+      return head.contains(value, head.left);
+    }
+    return false;
   },
   depthFirstLog: function() {
 
