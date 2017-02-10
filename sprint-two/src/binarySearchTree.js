@@ -10,14 +10,9 @@ var BinarySearchTree = function(value) {
 
 var bstMethods = {
   insert: function(value, head) {
-    console.log(this.bst);
     //If it's bigger than tree's value
-    head = head || this.bst;
-    if (head === undefined) {
-      this.bst = BinarySearchTree(value);
-      return;
-    }
-    
+    head = head || this;
+    //Goes right
     if (value > head.value) {
       //If it's null you insert
       if (head.right === null) { 
@@ -25,7 +20,7 @@ var bstMethods = {
       } else {
         head.insert(value, head.right);
       }
-
+    //Goes left
     } else if (value < head.value) {
       if (head.left === null) {
         head.left = BinarySearchTree(value);  
@@ -33,7 +28,6 @@ var bstMethods = {
         head.insert(value, head.left);
       }
     }
-
   },
   contains: function() {
 
